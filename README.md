@@ -15,6 +15,10 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         - DB 연동이 무지 쉽다 
         - [웹사이트 , 웹서버 확인 사이트](https://sitereport.netcraft.com/)
 
+
+        - MVC 
+            <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp002.png" width="730">
+
 - Spring boot 개발환경 설정
 - Java JDK확인 > 17버전 이상
         - [jdk](https://jdk.java.n0et/archive/)
@@ -74,15 +78,19 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
             - Gradle for java(코끼리 아이콘) > Tasks > Build > Build play icon(Run task) 실행
         - Spring Boot Dashboard
             - Apps > Spring01 Run | Debug 중에 하나 아이콘 클릭 서버 실행 
+            - 디버그로 실행해야 Hot Code replace 가 동작!! 
+
+                 <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp001.png" width="350">
+
+
         - 브라우저 변경설정
             - 설정(Ctrl + ,) > browser 검색 > Spring>Dashboard Open With 'Internal' -> 'external'로 변경 
             - chrome 을 기본브라우저로 사용 추천
-            - 디버그로 실행해야 Hot Code replace 가 동작!! 
-
+              
 ## 2일차
 - Oracle 도커로 설치
     - 설치되어 있는 Oracle 삭제
-    
+
 
 - Database 설정
     - H2 DB - Spring Boot에서 손쉽게 사용한 Inmemory DB, Oracle, MySQL, SQL Server 과 쉽게 호환
