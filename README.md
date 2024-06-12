@@ -79,11 +79,18 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
             - chrome 을 기본브라우저로 사용 추천
             - 디버그로 실행해야 Hot Code replace 가 동작!! 
 
+## 2일차
+- Oracle 도커로 설치
+    - 설치되어 있는 Oracle 삭제
+    
+
 - Database 설정
     - H2 DB - Spring Boot에서 손쉽게 사용한 Inmemory DB, Oracle, MySQL, SQL Server 과 쉽게 호환
     - Oracle - 운영시 사용할 DB
     - MySQL - Optional 설명할 DB
     - Oracle PKNUSB / pknu_p@ss로 생성
+        - 콘솔
         ```shell
-        
+        > sqlplus system/password
+        SQL > 
         ```
