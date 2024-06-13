@@ -132,8 +132,61 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
     - Oracle - 운영시 사용할 DB
     - MySQL - Optional 설명할 DB
     - Oracle PKNUSB / pknu_p@ss로 생성
-        - 콘솔
+    - 콘솔(도커/ 일반 Oracle)
         ```shell
         > sqlplus system/password
-        SQL > 
+        SQL > select name from v$database;
+        // 서비스명 확인 
+        // 최신버전에서 사용자 생성시 C## prefix 방지 쿼리
+        SQL > ALTER SESSION SET "_ORACLE_SCRIPT"=true;
+        // 사용자 생성
+        SQL > create user pknusb identified by "pknusb_p@ss";
+        // 사용자 권한
+        SQL> grant CONNECT, RESOURCE, CREATE SESSION, CREATE TABLE, CREATE SEQUENCE, CREATE VIEW to pknusb;
+        // 사용자 계정 테이블 공간설정, 공간쿼터
+        SQL> alter user pknusb default tablespace users;
         ```
+
+        - H2 DB - Spring Boot 에서 손쉽게 사용한 Inmermory DB, Oracle, Mysql, SQLServer 과 쉽게 호환
+        - MySQL - Optional 설명할 DB
+
+    - Spring Boot + MyBatis
+        - application name : Spring02
+        - Spring Boot 3.3.x 에는 MyBatis 없음
+        - Dependency 중 DB(H2, Oracle, MySQL) 가 선택되어 있으면 웹서버 실행이 안됨
+
+        - build.gradle 확인
+        - application.properties 추가작성
+        ```properties
+        spring.application.name=spring02
+
+        ## 포트변경
+        server.port = 8091
+
+        ## 로그색상
+        spring.output.ansi.enabled=always
+
+        ## 수정사항이 있으면 서버 자동 재빌드 설정
+        spring.devtools.livereload.enabled=true
+        spring.devtools.restart.enabled=true
+
+        ## 로그레벨 설정
+        logging.level.org.springframework=info
+        logging.level.org.zerock=debug
+
+        ## Oracle 설정 
+        spring.datasource.username=pknusb
+        spring.datasource.password=pknu_p@ss
+        # spring.datasource.url=jdbc:oracle:thin:@localhost:11521:FREE
+        spring.datasource.url=jdbc:oracle:thin:@localhost:11521:FREE
+        spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+        ## MyBatis 설정
+        ## mapper 폴더 밑에 여러가지 폴더가 내재, 확장자는 .xml 이지만 파일명은 뭐든지
+        mybatis.mapper-locations=classpath:mapper/**/*.xml
+        mybatis.type-aliases-package=com.jkh9610.spring02.domain
+        ```
+
+        - Mybatis 적용
+            - SpringBoot 이전 resources/WEB-INF 위치에 root-context.xml에 DB, Mybatis 설정
+            - SpringBoot 이후 application.properties + Config.java로 변경
