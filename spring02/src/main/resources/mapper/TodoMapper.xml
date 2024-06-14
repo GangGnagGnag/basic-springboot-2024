@@ -5,17 +5,28 @@
 
 <mapper namespace="com.jkh9610.spring02.mapper.TodoMapper"> <!-- interface이든 class 이든 잘 연결하면 매핑이 됨 -->
 
-    <select id="selectTodos" resultType="hashmap">
+    <!-- <select id="selectTodos" resultType="hashmap"> hashmap 은 어떤 값이 들어올지 모를때 사용 파라미터 타입일때는 파라미터를 여러개를 받을때는 -->
+    <select id="selectTodos" resultType="Todo">
         SELECT 
             TNO
             ,TITLE
             ,DUEDATE
             ,WRITER
             ,INDONE
-        FROM TODOS;
+        FROM TODOS
     </select>
 
-    <select>
+<!-- 파라미터 타입이 있는경우 파라미터 타입도 넣어야함 -->
+    <select id="selectTodo" resultType="Todo"
+                            parameterType="int">
+        SELECT 
+            TNO
+            ,TITLE
+            ,DUEDATE
+            ,WRITER
+            ,INDONE
+        FROM TODOS
+        WHERE TNO = #{tno}
     </select>
 
 </mapper>

@@ -10,7 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Todo {
-    private Integer tno;
+    private int tno;
 
     private String title;
 
