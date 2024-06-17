@@ -262,4 +262,4 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
     12. /repository/ReplyRepository.java 인터페이스(JpaRepository 상속) 생성
     13. (설정)application.properties ddl-auto=create -> ddl-auto=update 변경
     13. /test/.../repository/BoardRepositoryTests.java 생성, 테스트 메서드 작성
-    14. 시작
+    14. 테스트 시작 > 웹서버 실행 > h2-console 확인
