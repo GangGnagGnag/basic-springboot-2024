@@ -275,13 +275,34 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         ]
     }
     ```
-    -  저장 후
+    -  저장 후 실행
+
+- Spring Boot 프로젝트 오류처리
+    - 빌드를 해도 제대로 결과가 반영안되면
+    - Local Repository를 모두 삭제 후 새로 커밋
+    - 프로젝트 새로 로드 ,초기화
 
 - Spring Boot JPA 프로젝트 개발 계속
-    15. jUnit 테스트로 CRUD 확인
-    16. /service/BoardService.java 생성 후 getList() 메서드 작성
-    17. /controller/boardController.java 생성 후 /board/list 실행할 수 잇ㄴ느 메서드 작성
-    18. /templates/board/list.html 생성
+    1. jUnit 테스트로 CRUD 확인
+    2. /service/BoardService.java 생성 후 getList() 메서드 작성
+    3. /controller/boardController.java 생성 후 /board/list 실행할 수 잇ㄴ느 메서드 작성
+    4. /templates/board/list.html 생성
         - Thymeleaf 속성
             - th:if="${board != null}"
-            - th:each="board : ${boardList}
+            - th:each="board : ${boardList}"
+            - th:text="${board.title}"
+    5. /service/BoardService.java 에 getBoard() 메서드 추가
+    6. /controller/BoardController.java에/board/detail/{bno} 실행 메서드 작성
+    7. /templates/board/detail html
+
+    8. /templates/board/detail.html에 댓글영역 추가
+    9. /service/ReplyService.java 생성, 댓글저장 메서드 작성
+    10. /controller/ReplyController.java 생성, /reply/create/{bno} 포스트매핑 메서드 작성
+
+    11. Bootstrap 적용 방법
+        - 1번 방법: 다운로드 후 프로젝트에 위치
+        - 2번 방법: CDN링크를 추가
+        - https://www.getBootstrap.com 다운로드 후 압축해제
+        - bootstrap.min.css, bootstrap.min.js templates/static에 위치
+
+            
