@@ -10,8 +10,8 @@ import com.jkh9610.backboard.entity.Board;
 import com.jkh9610.backboard.service.BoardService;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestMethod;
+// import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 

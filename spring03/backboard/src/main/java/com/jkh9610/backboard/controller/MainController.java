@@ -6,7 +6,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.GetMapping;
 // import org.springframework.web.bind.annotation.RequestParam;
 // import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RequestParam;
+// import org.springframework.web.bind.annotation.RequestParam;
 
 
 
@@ -24,5 +24,4 @@ public class MainController {
     public String getMain() {
         return "redirect:/board/list"; //loaclhost8080/ -> localhost8080/board/list변경
     }
-    
 }
