@@ -38,14 +38,13 @@
         </div>
 
         <!-- 답변기능 영역 -->
-        <div>
-            <form th:action="@{|/reply/create/${board.bno}|}" method="post">
-                <textarea name="content" id="content" rows="10"></textarea>
-                <div class="d-flex justify-content-end mt-z"></div>
+        <form th:action="@{|/reply/create/${board.bno}|}" method="post" class="my-3">
+            <textarea name="content" id="content" rows="10" class="form-control"></textarea>
+            <div class="d-flex justify-content-end mt-2">
                 <input type="submit" value="댓글등록" class="btn btn-sm btn-primary mx-1">
                 <a href="/board/list" class="btn btn-sm btn-secondary">목록</a>
-            </form>
-        </div>
+            </div>
+        </form>
 
         <script th:src="@{/bootstrap.min.js}"></script>
 </body>
