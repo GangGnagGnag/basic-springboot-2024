@@ -14,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.jkh9610.backboard.entity.Board;
 import com.jkh9610.backboard.repository.BoardRepository;
+import com.jkh9610.backboard.service.BoardService;
 
 
 @SpringBootTest
@@ -22,6 +23,18 @@ public class BoardRepositoryTests {
     // JUnit 테스트
     @Autowired
     private BoardRepository boardRepository;
+
+    @Autowired
+    private BoardService boardService;
+
+    @Test
+    void testThreeHunderedBoards() {
+        for (int i = 0; i < 300; i++) {
+            this.boardService.setBoard(String.format("테스트 데이터 - [%03d]", i+1),
+                                            "별내용 없습니다.");
+        }
+    }
+
 
     @Test
     void testInsertBoard(){

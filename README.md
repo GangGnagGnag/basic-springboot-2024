@@ -295,6 +295,8 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
     6. /controller/BoardController.java에/board/detail/{bno} 실행 메서드 작성
     7. /templates/board/detail html
 
+        <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp003.png" width="730">
+
     8. /templates/board/detail.html에 댓글영역 추가
     9. /service/ReplyService.java 생성, 댓글저장 메서드 작성
     10. /controller/ReplyController.java 생성, /reply/create/{bno} 포스트매핑 메서드 작성
@@ -304,5 +306,31 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         - 2번 방법: CDN링크를 추가
         - https://www.getBootstrap.com 다운로드 후 압축해제
         - bootstrap.min.css, bootstrap.min.js templates/static에 위치
+    12. /templates/board/list.html, detail.html 부트스트랩 적용
 
-            
+        <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp004.png" width="730">    
+
+## 6일차
+- Spring Boot JPA 프로젝트 계발 계속
+    1. (설정) build.gradle Thymeleaf 레이아웃 사용을 위한 
+    2. /templates/layout.html Thymeleaf로 레이아웃 템플릿 생성
+    3. list.html, detail.html 레이아웃 템플릿 적용
+    4. /templates/layout.html Bootstrap CDN 적용
+    5. /templates/board/list.html 게시글 등록버튼 생성
+    6. /templates/board/create.html 게시글 작성 페이지 생성
+    7. /controller/BoardController.java create() GetMapping 메서드 작성
+    8. /service/BoardService.java setBoard()작성
+    9. /controller/BoardController.java create() PostMapping 메서드 작성
+    10. (문제) 아무내용도 안적어도 저장됨
+    11. (설정) build.gradle 입력값 검증 Spring Boot Validation 디펜던시 추가    
+    12. /validation/BoardForm.java 클래스 생성
+    13. /controller/BoardFormController.java에 BoardForm을 전달(Get, PostMapping 둘다)
+    14. create.html 입력항목 name, id를 th:field로 변경(ex. th:field="*{content}" )
+    15. 댓글등록에도 반영. ReplyForm, ReplyController, detail.html 작업(12~14 내용과 유사)
+    16. detail.html  경고영역 div는 crate.html에서 복사해서 가져오기
+    17. (문제)각 입력창에 공백을 넣었을때 입력되는 문제 @NotEmpty는 스페이스를 허용하기 때문에  @NotBlank를 사용해 주어야한다
+    18. /templates/layout.html에 네비게이션바(navbar) 추가
+    19. 테스트로 대량 데이터 추가
+
+## 7일차
+- Spring Boot JPA 프로젝트 계발 계속
