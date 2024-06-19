@@ -329,6 +329,9 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
     15. 댓글등록에도 반영. ReplyForm, ReplyController, detail.html 작업(12~14 내용과 유사)
     16. detail.html  경고영역 div는 crate.html에서 복사해서 가져오기
     17. (문제)각 입력창에 공백을 넣었을때 입력되는 문제 @NotEmpty는 스페이스를 허용하기 때문에  @NotBlank를 사용해 주어야한다
+
+        <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp005.png" width="730">
+
     18. /templates/layout.html에 네비게이션바(navbar) 추가
     19. 테스트로 대량 데이터 추가
 
