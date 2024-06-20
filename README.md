@@ -351,7 +351,16 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         - /controller/BoardController.java list()메서드 수정
         - /template/board/list.html boardList -> paging 변경
         - /template/board/list.html 하단 페이징 버튼 추가, thymeleaf 기능추가
-        - /service/BoardService.java getList() 최신순 역정렬로 변경        - application.properties Oracle 관련 설정 추가, H2 설정 주석처리
+        - /service/BoardService.java getList() 최신순 역정렬로 변경
+        - /template/board/list.html에 게시글 번호 수정
+
+         <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp006.png" width="730">
+
+    2.  /template/board/list.html td 뱃지태그 추가
+
+    3. H2 -> Oracle로 DB변경
+        - build.gradle, Oracle 디펜던시 추가
+        - application.properties Oracle 관련 설정 추가, H2 설정 주석처리
         - 
 
     4. 스프링시큐리티
