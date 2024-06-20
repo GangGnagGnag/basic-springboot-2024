@@ -4,7 +4,7 @@
         <h5 class="border-bottom my-3 pb-2">게시글 등록/수정</h5>
 
         <form th:action="@{/board/create}" th:object="${boardForm}"  method="post">
-            <div th:replace="~{errors :: formErrorFragment}"></div> // errors.html에 에러가 뜨는부분을 저장해놓고 불러와서 씀
+            <div th:replace="~{errors :: formErrorFragment}"></div> <!--errors.html에 에러가 뜨는부분을 저장해놓고 불러와서 씀--> 
             <div class="mb-3">
                 <label for="title" class="form-label">글제목</label>
                 <input type="text" th:field="*{title}" id="title" class="form-control">

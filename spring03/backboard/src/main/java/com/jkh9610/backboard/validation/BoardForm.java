@@ -1,7 +1,6 @@
-package main.java.com.jkh9610.backboard.validation;
+package com.jkh9610.backboard.validation;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
