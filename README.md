@@ -345,10 +345,21 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
      rows fetch first 10 rows only  -- 페이지사이즈
     ```
 
-    1. 페이징
+    1. 페이징(중요!)
         - /repository/BoardRepository.java findAll(pageable) 인터페이스 메서드 작성
         - /service/BoardService.java getList(page) 메서드 작성
         - /controller/BoardController.java list()메서드 수정
         - /template/board/list.html boardList -> paging 변경
         - /template/board/list.html 하단 페이징 버튼 추가, thymeleaf 기능추가
-        - /service/BoardService.java getList() 최신순 역정렬로 변경
+        - /service/BoardService.java getList() 최신순 역정렬로 변경        - application.properties Oracle 관련 설정 추가, H2 설정 주석처리
+        - 
+
+    4. 스프링시큐리티
+        - (설정) build.gradle 스프링 시큐리티 디펜던시 추가
+        - (설정) Gradle재빌드, 서버 실행
+        - user / 로그상 UUID (서버실행시 마다 변경) 입력
+        - /security/SecurityConfig.java 보안설정 파일 생성, 작성 -> 시큐리티를 다시 풀어주는 일
+
+        - /entity/member.java 추가
+        - /repository/MemberRepository.java 인터페이스 생성
+        - /service/MemberService.java setMember() 메서드 작성
