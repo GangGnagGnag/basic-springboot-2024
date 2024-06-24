@@ -457,7 +457,7 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         - /repository/BoardRepository.java findAll()메서드 추가
         - /service/BoardService.java getList() 메서드 추가 생성
         - /controller/boardController.java list() 메서드 추가
-        - /templates/board/list.html 검색창 추가, searchForm 폼영역 추가, 페이징영역 수정, javaScript 추가
+        - /templates/board/list.html 검색창 추가, searchForm 폼영역 추가, **페이징영역 수정, javaScript 추가**
 
     4. 마크다운 적용
         - 마크다운 뷰, 마크다운 에디터
