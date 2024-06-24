@@ -46,7 +46,7 @@ UPDATE board SET
 	writer_mid = 153;
 	
 
-SELECT 
+SELECT DISTINCT 
        b.BNO
      , b.TITLE 
     , b.CONTENT
@@ -58,8 +58,7 @@ SELECT
   LEFT OUTER JOIN REPLY r ON b.BNO = r.BOARD_BNO 
  WHERE b.title LIKE '%123%'
     OR b.content LIKE '%123%'
-    OR r.content LIKE '%123%'
-
+    OR r.content LIKE '%123%' 
 
 
 
