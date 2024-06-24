@@ -44,3 +44,26 @@ SELECT * FROM BOARD;
 
 UPDATE board SET 	 
 	writer_mid = 153;
+	
+
+SELECT 
+       b.BNO
+     , b.TITLE 
+    , b.CONTENT
+    , b.CREATE_DATE 
+    , b.MODIFY_DATE 
+    , b.WRITER_MID 
+  FROM BOARD b
+  LEFT OUTER JOIN MEMBER m ON b.WRITER_MID = m.MID 
+  LEFT OUTER JOIN REPLY r ON b.BNO = r.BOARD_BNO 
+ WHERE b.title LIKE '%123%'
+    OR b.content LIKE '%123%'
+    OR r.content LIKE '%123%'
+
+
+
+
+
+
+
+

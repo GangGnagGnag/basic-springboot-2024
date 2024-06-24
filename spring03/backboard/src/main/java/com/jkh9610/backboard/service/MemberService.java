@@ -4,7 +4,7 @@ package com.jkh9610.backboard.service;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.jkh9610.backboard.common.NotFountException;
+import com.jkh9610.backboard.common.NotFoundException;
 import com.jkh9610.backboard.entity.Member;
 import com.jkh9610.backboard.repository.MemberRepository;
 import com.jkh9610.backboard.security.MemberRole;
@@ -43,6 +43,6 @@ public class MemberService {
         if (member.isPresent())
             return member.get();
         else
-            throw new NotFountException("Member not found!");
+            throw new NotFoundException("Member not found!");
     }
 }
