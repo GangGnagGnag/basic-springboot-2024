@@ -18,7 +18,9 @@ import org.springframework.data.jpa.domain.Specification;
 
 import com.jkh9610.backboard.common.NotFoundException;
 import com.jkh9610.backboard.entity.Board;
+import com.jkh9610.backboard.entity.Category;
 import com.jkh9610.backboard.entity.Member;
+import com.jkh9610.backboard.entity.Reply;
 import com.jkh9610.backboard.repository.BoardRepository;
 
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -57,6 +59,19 @@ public class BoardService {
         return this.boardRepository.findAllByKeyword(keyword, pageable);
     }
 
+    // 24.06.25 카테고리추가
+     public Page<Board> getList(int page, String keyword, Category category) {
+        List<Sort.Order> sorts = new ArrayList<>();
+        sorts.add(Sort.Order.desc("createDate"));
+        Pageable pageable = PageRequest.of(page, 10, Sort.by(sorts)); // pageSize를 동적으로도 변경할 수 있음.나중에...
+
+        Specification<Board> spec = searchBoard(keyword, category.getId());
+        return this.boardRepository.findAll(spec, pageable); // Specification 인터페이스로 쿼리 생성로직 만들어서
+        // return this.boardRepository.findAllByKeyword(keyword, pageable);
+    }
+
+    
+
     public Board getBoard(Long bno){
         Optional<Board> board = this.boardRepository.findById(bno);
         if(board.isPresent()){  // 데이터가 존재하면
@@ -77,6 +92,17 @@ public class BoardService {
         this.boardRepository.save(board); //PK가 없으면 INSERT
     }
 
+    // 24.06.25 카테고리 추가
+    public void setBoard(String title, String content, Member writer, Category category) {
+        // 빌더로 생성한 객체
+        Board board = Board.builder().title(title).content(content)
+                           .createDate(LocalDateTime.now()).build();
+        board.setCategory(category);
+        board.setWriter(writer);
+
+        this.boardRepository.save(board); //PK가 없으면 INSERT
+    }
+
     // 24.06.24  modBoard 추가작성
     public void modBoard(Board board, String title, String content){
         board.setTitle(title);
@@ -91,21 +117,41 @@ public class BoardService {
     }
 
     // 검색쿼리 대신 검색기능 생성
-    public Specification<Board> searchBoard(String keyword){
+    public Specification<Board> searchBoard(String keyword) {
         return new Specification<Board>() {
             private static final long serialVersionUID = 1L; // 필요한 값이라서 추가
 
             @Override
             public Predicate toPredicate(Root<Board> b, CriteriaQuery<?> query, CriteriaBuilder cb) {
-                // quert JPA로 생성
-                query.distinct(true); //중복제거
-                Join<Board, Member> r = b.join("replyList", JoinType.LEFT);
+                // query를 JPA로 생성
+                query.distinct(true); //중복 제거
+                Join<Board, Reply> r = b.join("replyList", JoinType.LEFT);
 
+                return cb.or(cb.like(b.get("title"), "%" + keyword + "%"), // 게시글 제목에서 검색
+                        cb.like(b.get("content"), "%" + keyword + "%"), // 게시글 내용에서 검색
+                        cb.like(r.get("content"), "%" + keyword + "%")  // 댓글 내용에서 검색
+                );
+            }
+        };
+    }
 
-                return cb.or(cb.like(b.get("title"), "%" + keyword + "%"), //게시글 제목에서 검색
-                             cb.like(b.get("content"), "%" + keyword + "%"),  // 게시글 내용에서 검색
-                             cb.like(r.get("content"), "%" + keyword + "%")  // 댓글 내용에서 검색
-                             ); 
+    
+    // 카테고리 추가된 메서드
+    public Specification<Board> searchBoard(String keyword, Integer cateId) {
+        return new Specification<Board>() {
+            private static final long serialVersionUID = 1L; // 필요한 값이라서 추가
+
+            @Override
+            public Predicate toPredicate(Root<Board> b, CriteriaQuery<?> query, CriteriaBuilder cb) {
+                // query를 JPA로 생성
+                query.distinct(true); //중복 제거
+                Join<Board, Reply> r = b.join("replyList", JoinType.LEFT);
+
+                return cb.and(cb.equal(b.get("category").get("id"), cateId),
+                        cb.or(cb.like(b.get("title"), "%" + keyword + "%"), // 게시글 제목에서 검색
+                        cb.like(b.get("content"), "%" + keyword + "%"), // 게시글 내용에서 검색
+                        cb.like(r.get("content"), "%" + keyword + "%")  // 댓글 내용에서 검색
+                ));
             }
         };
     }

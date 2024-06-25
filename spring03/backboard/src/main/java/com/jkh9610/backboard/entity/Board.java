@@ -47,14 +47,14 @@ public class Board {
     @Column(name = "modifyDate")// updatable = true 가 기본 값이 기때문에 따로 적지 않아도 됨
     private LocalDateTime modifyDate; // 글 수정일 기능추가 (24.06.24추가) 
 
-
     // 사용자가 여러개의 게시글을 작성할 수 있다
     @ManyToOne
     private Member writer; 
 
-    
     // 중요!!! RelationShip 일대다
     @OneToMany(mappedBy = "board", cascade = CascadeType.REMOVE)    // 게시글을 지우게 되면 게시글에 관련된 댓글도 지운다는 의미
     private List<Reply> replyList; // 댓글 리스트
 
+    @ManyToOne
+    private Category category;  //free, qna 로 구분해서 글생성 가능
 }

@@ -59,6 +59,9 @@ SELECT DISTINCT
  WHERE b.title LIKE '%123%'
     OR b.content LIKE '%123%'
     OR r.content LIKE '%123%' 
+    
+    
+    
 
 
 
