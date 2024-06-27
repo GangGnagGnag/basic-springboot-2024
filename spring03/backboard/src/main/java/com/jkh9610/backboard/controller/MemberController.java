@@ -27,7 +27,7 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login() {
-        return "/member/login";
+        return "member/login";
     }
 
     @GetMapping("/register")
@@ -46,7 +46,6 @@ public class MemberController {
             return "member/register";
         }
 
-        // 중복 사용자 처리
         // 중복 사용자 처리
         try{
             this.memberService.setMember(memberForm.getUsername(),memberForm.getEmail(), memberForm.getPassword1());
