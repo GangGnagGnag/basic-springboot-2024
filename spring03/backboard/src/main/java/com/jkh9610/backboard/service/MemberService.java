@@ -20,6 +20,7 @@ public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
 
+    // 새로 사용자 생성
     public Member setMember(String username, String email, String password){
         Member member = Member.builder().username(username).email(email).regDate(LocalDateTime.now()).build();
 
@@ -34,6 +35,12 @@ public class MemberService {
 
 
         return member;
+    }
+
+    // 기존사용자 비번변경
+    public void setMember(Member member) {
+        member.setPassword(passwordEncoder.encode(member.getPassword()));
+        this.memberRepository.save(member);  // 업데이트
     }
 
 
