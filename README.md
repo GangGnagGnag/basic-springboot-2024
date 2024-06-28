@@ -675,6 +675,7 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         - /service/MemberService.java에 메일주소로 검색하는 메서드 getMemberbyEamil()
         - /service/MailService.java에 메일전송 메서드 생성, 수정
             - UUID를 생성해서 메일로 전송하는 기능을 추가
+            
 
             <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/sp013.png" width="730">
 
