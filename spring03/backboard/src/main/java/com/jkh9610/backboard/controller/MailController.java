@@ -34,9 +34,16 @@ public class MailController {
             Member member = this.memberService.getMemberByEmail(email);
 
             // 메일전송
-            this.mailService.sendResetPasswordEmail(member.getEmail());
-            
-            model.addAttribute("result","초기화 메일 전송 성공");
+            Boolean result = this.mailService.sendResetPasswordEmail(member.getEmail());
+
+            if(result){
+                log.info("▶▶▶▶ 초기화 메일 전송 완료");    
+                model.addAttribute("result","초기화 메일 전송 성공");
+            }                
+            else{
+                model.addAttribute("result","초기화 메일 전송 실패! 관리자에게 문의하세요");
+            }
+        
         } catch (Exception e) {
             model.addAttribute("result","초기화 메일 전송 실패! 사용자가 없습니다");
         }

@@ -25,7 +25,7 @@ public class RestMailController {
         String subject = "전송 테스트 메일";
         String message = "테스트 메시지입니다";
 
-        mailService.sendmail(to, subject, message);
+        mailService.sendMail(to, subject, message);
         return new ResponseEntity<HttpStatus>(HttpStatus.OK);
     }
     
