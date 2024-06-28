@@ -19,6 +19,9 @@ public class MailService {
     private final JavaMailSender javaMailSender;
     // private final PasswordEncoder passwordEncoder;
 
+    // 메일에서 초기화 할 화면으로 이동 URL
+    private String resetPassUrl = "http://localhost:8080/member/reset-password"; 
+
     @Value("${spring.mail.username}")    
     private String from;
 
@@ -41,6 +44,19 @@ public class MailService {
             
         } catch (MessagingException e) {  
             throw new RuntimeException(e);
+        }
+    }
+
+    // 패스워드 초기화 메일 전송 메서드
+    public Boolean sendResetPasswordEmail(String email) {
+        String subject = "";
+        String message = "";
+
+        try{
+            sendMail(email, subject, message);
+            return true;
+        } catch (Exception e){
+            return false;
         }
     }
 }

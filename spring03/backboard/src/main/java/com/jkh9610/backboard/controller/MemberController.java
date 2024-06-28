@@ -27,7 +27,12 @@ public class MemberController {
 
     @GetMapping("/login")
     public String login() {
-        return "member/login";
+        return "member/login";  // /templates/member/reset.html 만듦
+    }
+
+    @GetMapping("/reset")
+    public String reset() {
+        return "member/reset";
     }
 
     @GetMapping("/register")
