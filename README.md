@@ -593,7 +593,7 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 			- sudo java -jar ... 로 실행하면 안되요~
 
 		- 스프링부트서버 백그라운드 실행 쉘 작성
-			- > nano start.sh
+			-> nano start.sh
 				```shell
 				#!/bin/bash
 
@@ -607,7 +607,7 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 				> chmod +x start.sh
 				```
 
-			- > nano stop.sh
+			-> nano stop.sh
 				```shell
 				#!/bin/bash
 
@@ -727,15 +727,15 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
         - https://nodejs.org/en, Download Node.js(LTS) 클릭
         - 설치 후 콘솔에서 node --version로 확인. 현재 v20.15.0
     2. 리액트 패키지 설치
-        - > npm uninstall -g create-react-app
-        - > npm install -g create-react-app
+        -> npm uninstall -g create-react-app
+        -> npm install -g create-react-app
     3. 리액트 프로젝트를 초기화
         - VS Code에서 터미널 오픈
-        - > npx create-react-app basic-app
+        -> npx create-react-app basic-app
 
     4. 리액트 실행
         - 콘솔에서 위에서 만든 프로젝트앱 이름까지 진입 basic-app()
-        - > npm staet
+        -> npm staet
         - 웹브라우저 http://localhost:3000/ 서버 확인
         - node가 3000 포트로 웹서버 실행
         - 웹서버가 실행된 상태에서 개발하는 것이 가장 좋음
@@ -870,10 +870,45 @@ Java 빅데이터 개발자과정 Spring Boot 학습 리포지토리
 - Spring Boot React 연동 프로젝트 개발 계속
     1. 리액트 프로젝트 생성
         - 터미널 /spring03으로 이동
-            - 〉npx create-react-app frontboard
+            -> npx create-react-app frontboard
 
+    2. Spring Boot / React 같이 개발할때
+        - Spring Boot 웹서버 실행
+        - React 프론트웹서버 실행
 
+    3. 리액트 라이브러리 설치. npm
+        - 리액트용 BootStrap 설치
+        -> npm install react-bootstrap bootstrap
+        - **TIP  npm audit fix --force 절대 하지말것**
+        -> npm install axios - RESP API 통신 라이브러리
+        -> npm install react-router-dom -> 리액트 화면 네비게이션
+        -> npm install react-js-pagination -> 리액트 페이징 처리
 
+    4. frontboard 개발시작
+        - App.js, logo.svg 삭제, 내용 삭제 , react-router-dom 으로 Routes, Route 사용 
+        - index.js, reportWebVitals() 삭제
+        - index.js, <React.StrictMode> 삭제 또는 주석
+        - /src/layout/Header.js, Footer.js 생성
+        - /src/routes/Home.js, BoardList.js, QnaList.js, Login.js 생성
+        - App.js에 Route될 화면 추가
+        - Header.js에 react-router-dom추가, Link, useNavigate 사용
+
+    5. backboard RestAPI 추가
+        - /restcontroller/RestBoardController.java 생성, BoardController 에 있는 메서드 복사
+        - (문제)Spring Boot 와 Rest API 간의 리턴데이터 차이 때문에 100% 호환안됨
+        - (문제) Spring Boot 에서 만든 Entity는 Board와 Reply 등의 OneToMany / ManyToOne 가 JSON으로 변환할때 문제 발생
+        - /Entity를 그대로 사용하지 말고,RestAPI에서는 다른 클래스를 만들어야 함
+        - /dto/BoardDto.java 생성
+        - /dto/ReplyDto.java 생성
+        - /RestBoardController.java getList()를 Board Entity -> BoardDto로 변경
+        - /security/SecurityConfig.java CORS설정 추가
+
+     6. frontbaord 개발 계속
+        - BoardList.js axios RestAPI 호출내용 추가
+        - 테이블 내용을 boardList.map() 10개 리스트 디스플레이
+    
+
+    <img src="https://raw.githubusercontent.com/GangGnagGnag/basic-springboot-2024/main/images/react.003png" width="730">   
 
 
 
